@@ -1,0 +1,25 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Ryan Demboski</h1>
+    <div class="d-flex justify-content-center">
+        <div style="width: 200px; height: 200px; overflow: hidden;" class="rounded-circle mb-4">
+            <img src="~/img/Ryan.PNG" alt="Ryan Demboski" class="w-100 h-100" style="object-fit: cover;" />
+        </div>
+    </div>
+    <p class="lead">.NET Software Developer / Azure Cloud Solutions</p>
+    <p>Open to work full-time in or around Phoenix AZ! Also open to remote work.</p>
+    <a href="/about" class="btn btn-success mt-3">About Me</a>
+    <a href="/projects" class="btn btn-success mt-3">See My Work</a>
+    <a href="/resume" class="btn btn-success mt-3">Link To My Resume</a>
+    <br />
+    <div class="text-center mt-4">
+        <a class="btn btn-outline-secondary" href="~/files/demboski-resume.pdf" download>
+            Download Resume
+        </a>
+    </div>
+</div>

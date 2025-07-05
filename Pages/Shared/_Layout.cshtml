@@ -1,0 +1,181 @@
+﻿<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="utf-8" />
+    <title>@ViewData["Title"] - Ryan Demboski</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+    <style>
+        :root 
+        {
+            --bg: #f8f9fa;
+            --text: #212529;
+            --card-hover: rgba(0,0,0,0.1);
+            --footer-bg: #f8f9fa;
+            --footer-text: #6c757d;
+        }
+
+        [data-theme="dark"] 
+        {
+            --bg: #121212;
+            --text: #e2e2e2;
+            --card-hover: rgba(255,255,255,0.1);
+            --footer-bg: #1e1e1e;
+            --footer-text: #aaa;
+        }
+
+        body 
+        {
+            background-color: var(--bg);
+            color: var(--text);
+            font-size: 1.1rem;
+        }
+
+        p 
+        {
+            font-size: 1.1rem;
+        }
+
+        li 
+        {
+            font-size: 1.4rem;
+        }
+
+        h1 
+        {
+            font-size: 2.5rem;
+        }
+
+        h2 
+        {
+            font-size: 2rem;
+            color: #198754;
+        }
+
+        h3 
+        {
+            font-size: 1.75rem;
+        }
+
+        h4 
+        {
+            font-size: 1.5rem;
+        }
+
+        h5 
+        {
+            font-size: 1.25rem;
+        }
+
+        h6 
+        {
+            font-size: 1rem;
+        }
+
+        a.btn:hover 
+        {
+            transform: scale(1.05);
+            transition: transform 0.2s ease-in-out;
+        }
+
+        .card:hover 
+        {
+            box-shadow: 0 0.5rem 1rem var(--card-hover);
+            transition: box-shadow 0.3s ease;
+        }
+
+        .footer, .navbar, .card, .form-control 
+        {
+            background-color: inherit;
+            color: inherit;
+        }
+
+        .navbar-dark .navbar-nav .nav-link 
+        {
+            color: #fff !important;
+        }
+
+        .navbar-dark .navbar-nav .nav-link:hover,
+        .navbar-dark .navbar-nav .nav-link:focus 
+        {
+            color: rgba(255,255,255,0.75) !important;
+        }
+
+        .form-control, .form-control:focus 
+        {
+            background-color: inherit;
+            color: inherit;
+            border-color: #ccc;
+        }
+
+        .list-group-item
+        {
+            background-color: var(--bg) !important;
+            color: var(--text) !important;
+            border-color: #444;
+        }
+
+        footer.footer 
+        {
+            background-color: var(--footer-bg) !important;
+            color: var(--footer-text) !important;
+        }
+    </style>
+</head>
+<body>
+    <script>
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme) 
+        {
+            document.documentElement.setAttribute('data-theme', savedTheme);
+        }
+    </script>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-success">
+        <div class="container">
+            <a class="navbar-brand" href="/">Ryan Demboski</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/About">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/Projects">Projects</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/Resume">Resume</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/Contact">Contact</a></li>
+                    <li class="nav-item">
+                        <button id="themeToggle" class="btn btn-sm btn-outline-light ms-3">Toggle Theme</button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <main role="main" class="container py-5">
+        @RenderBody()
+    </main>
+
+    <footer class="footer text-center py-4 border-top">
+        <div class="container">
+            <p class="mb-1">Email: <a href="mailto:ryan@demboski.com">ryan@demboski.com</a></p>
+            <p class="mb-1">Phone: (623)-692-4508</p>
+            <p class="mb-0">&copy; @DateTime.Now.Year Ryan Demboski. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+    <script>
+        const toggle = document.getElementById('themeToggle');
+        const root = document.documentElement;
+
+        toggle?.addEventListener('click', () => 
+        {
+            const newTheme = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+            root.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+        });
+    </script>
+    @RenderSection("Scripts", required: false)
+</body>
+</html>
